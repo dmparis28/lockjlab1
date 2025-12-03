@@ -197,7 +197,7 @@ export default function CaseStudies() {
               </div>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Professional cryptocurrency trading dashboard</h3>
               <p className="text-gray-400 text-lg mb-8 leading-relaxed">We created Coinflow, a sophisticated crypto trading platform featuring real-time price charts, instant buy/sell functionality, live order books, and comprehensive market statistics for serious traders.</p>
-              <Link href="/work" className="inline-flex items-center text-emerald-400 hover:text-emerald-300 font-semibold transition-colors group/link w-fit">
+              <Link href="/work/coinflow" className="inline-flex items-center text-emerald-400 hover:text-emerald-300 font-semibold transition-colors group/link w-fit">
                 View Case Study
                 <Icon name="ArrowRight" className="w-5 h-5 ml-2 transition-transform group-hover/link:translate-x-1" />
               </Link>

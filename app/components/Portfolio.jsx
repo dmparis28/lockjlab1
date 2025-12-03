@@ -4,18 +4,6 @@ import Icon from './Icon';
 
 const projects = [
   {
-    company: 'Coinflow',
-    title: 'Professional cryptocurrency trading platform',
-    description: 'We built Coinflow, a comprehensive crypto trading dashboard with real-time market data, portfolio tracking, and instant trading capabilities for both beginners and experienced traders.',
-    image: null,
-    tags: ['Fintech', 'UI/UX Design', 'Web Development'],
-    color: 'from-emerald-600/10 to-emerald-900/5',
-    border: 'border-emerald-500/20',
-    accent: 'text-emerald-400',
-    mockup: 'coinflow',
-    href: '/work/coinflow',
-  },
-  {
     company: 'MediBook',
     title: 'Modern healthcare appointment platform',
     description: 'We built MediBook, a comprehensive telehealth platform connecting patients with healthcare providers. Features include appointment scheduling, video consultations, medical records management, and secure messaging.',

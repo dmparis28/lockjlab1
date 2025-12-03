@@ -3,11 +3,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { workData, servicesData, clientsData, resourcesData, aboutData } from '../data/navdata.js';
 import SidebarMegaMenu from './SideBarMegaMenu';
 import Icon from './Icon';
 
 const Header = () => {
+  const pathname = usePathname();
   const [activeMenu, setActiveMenu] = useState(null);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,6 +39,11 @@ const Header = () => {
     };
     setActiveSubMenu(getInitialSubMenu(activeMenu));
   }, [activeMenu]);
+
+  // Don't render header on admin or portal pages (must be AFTER all hooks)
+  if (pathname.startsWith('/admin') || pathname.startsWith('/portal')) {
+    return null;
+  }
 
   const handleMouseEnter = (menu) => setActiveMenu(menu);
   const handleMouseLeave = () => setActiveMenu(null);

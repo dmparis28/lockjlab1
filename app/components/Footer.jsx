@@ -23,6 +23,7 @@ const footerLinks = {
     { name: 'Blog & Guides', href: '/resources' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'FAQ', href: '/faq' },
+    { name: 'Customer Portal', href: '/portal' },
   ],
 };
 
@@ -51,6 +52,11 @@ const pagesWithCustomCTA = [
 
 export default function Footer({ hideCTA = false }) {
   const pathname = usePathname();
+  
+  // Don't render footer on admin or portal pages
+  if (pathname.startsWith('/admin') || pathname.startsWith('/portal')) {
+    return null;
+  }
   
   // Check if current page has its own CTA
   const pageHasCustomCTA = pagesWithCustomCTA.some(path => pathname === path);
