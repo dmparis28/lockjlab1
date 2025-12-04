@@ -1,5 +1,8 @@
 // Filename: app/components/PageHero.jsx
+'use client';
+
 import Icon from './Icon';
+import { useTheme } from '../context/ThemeContext';
 
 export default function PageHero({ 
   tag, 
@@ -10,6 +13,9 @@ export default function PageHero({
   centered = true,
   size = 'md' // sm, md, lg
 }) {
+  const { activeTheme } = useTheme();
+  const isLight = activeTheme === 'cleanBespoke';
+
   const sizeClasses = {
     sm: 'py-16 md:py-20',
     md: 'py-20 md:py-28',
@@ -23,33 +29,53 @@ export default function PageHero({
   };
 
   return (
-    <section className={`relative bg-[#0B0F19] ${sizeClasses[size]} overflow-hidden`}>
+    <section 
+      className={`relative ${sizeClasses[size]} overflow-hidden`}
+      style={{ backgroundColor: 'var(--bg-primary)' }}
+    >
       {/* Background texture */}
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0)`,
+          backgroundImage: isLight 
+            ? `radial-gradient(circle at 1px 1px, #e5e7eb 1px, transparent 0)`
+            : `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0)`,
           backgroundSize: '40px 40px'
         }}
       />
       
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-sky-500/10 rounded-full blur-[120px]" />
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]"
+        style={{ background: `radial-gradient(circle, color-mix(in srgb, var(--gradient-from) 15%, transparent), transparent)` }}
+      />
       
       <div className={`container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10 ${centered ? 'text-center' : ''}`}>
         {/* Tag */}
         {tag && (
-          <div className={`inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-4 py-2 mb-6 animate-fade-in-up ${centered ? '' : ''}`}>
-            {icon && <Icon name={icon} className="w-4 h-4 text-sky-400" />}
-            <span className="text-sky-400 text-sm font-medium">{tag}</span>
+          <div 
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-6 animate-fade-in-up"
+            style={{ 
+              backgroundColor: 'var(--accent-muted)',
+              border: isLight ? 'none' : '1px solid var(--accent)'
+            }}
+          >
+            {icon && <Icon name={icon} className="w-4 h-4" style={{ color: 'var(--accent)' }} />}
+            <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>{tag}</span>
           </div>
         )}
 
         {/* Title */}
-        <h1 className={`${titleSizes[size]} font-extrabold text-white leading-tight mb-6 animate-fade-in-up animation-delay-100`}>
+        <h1 
+          className={`${titleSizes[size]} font-extrabold leading-tight mb-6 animate-fade-in-up animation-delay-100`}
+          style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-heading)' }}
+        >
           {title}{' '}
           {titleHighlight && (
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">
+            <span 
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: `linear-gradient(135deg, var(--gradient-from), var(--gradient-to))` }}
+            >
               {titleHighlight}
             </span>
           )}
@@ -57,7 +83,10 @@ export default function PageHero({
 
         {/* Description */}
         {description && (
-          <p className={`text-lg md:text-xl text-gray-400 animate-fade-in-up animation-delay-200 ${centered ? 'max-w-2xl mx-auto' : 'max-w-2xl'}`}>
+          <p 
+            className={`text-lg md:text-xl animate-fade-in-up animation-delay-200 ${centered ? 'max-w-2xl mx-auto' : 'max-w-2xl'}`}
+            style={{ color: 'var(--text-secondary)' }}
+          >
             {description}
           </p>
         )}

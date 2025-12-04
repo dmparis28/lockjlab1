@@ -651,8 +651,249 @@ export default function CoinflowCaseStudy() {
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* Challenge & Solution */}
       <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Challenge */}
+            <div className="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                  <Icon name="AlertCircle" className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">The Challenge</h3>
+              </div>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  Coinflow came to us with an ambitious vision: create a cryptocurrency trading platform that could compete with industry giants like Coinbase and Binance, but with a focus on user experience and accessibility for both beginners and professional traders.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'Complex real-time data from multiple exchanges',
+                    'Sub-second trade execution requirements',
+                    'Support for 50+ cryptocurrency pairs',
+                    'Mobile-responsive design for trading on-the-go',
+                    'Regulatory compliance across multiple jurisdictions'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="X" className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Solution */}
+            <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center">
+                  <Icon name="Sparkles" className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Our Solution</h3>
+              </div>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  We architected a high-performance trading platform using cutting-edge technologies, with a modular design that allows for rapid feature development and seamless scaling.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'WebSocket-based real-time data streaming',
+                    'Redis-backed order matching engine',
+                    'Progressive Web App for mobile trading',
+                    'Intuitive UI with customizable dashboards',
+                    'Built-in compliance and audit logging'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="Check" className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Design Process */}
+      <section className="py-16 md:py-24 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Design Process</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              From initial wireframes to polished UI, we followed a user-centered design approach
+            </p>
+          </div>
+
+          {/* Process Timeline */}
+          <div className="grid md:grid-cols-4 gap-6 mb-12">
+            {[
+              { phase: 'Research', duration: '2 weeks', icon: 'Target', items: ['Competitive analysis', 'User interviews', 'Market research'] },
+              { phase: 'Wireframing', duration: '2 weeks', icon: 'Layers', items: ['Information architecture', 'User flows', 'Lo-fi prototypes'] },
+              { phase: 'Visual Design', duration: '3 weeks', icon: 'Palette', items: ['Design system', 'Component library', 'Hi-fi mockups'] },
+              { phase: 'Prototyping', duration: '2 weeks', icon: 'MousePointerClick', items: ['Interactive demos', 'User testing', 'Iteration'] }
+            ].map((step, i) => (
+              <div key={i} className="relative">
+                {i < 3 && (
+                  <div className="hidden md:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-emerald-500/50 to-transparent z-0" />
+                )}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 relative z-10">
+                  <div className="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-4">
+                    <Icon name={step.icon} className="w-8 h-8 text-emerald-400" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-1">{step.phase}</h3>
+                  <p className="text-emerald-400 text-sm mb-3">{step.duration}</p>
+                  <ul className="space-y-2">
+                    {step.items.map((item, j) => (
+                      <li key={j} className="text-gray-400 text-sm flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Design Showcase Gallery */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+            <h3 className="text-xl font-semibold text-white mb-6">Interface Evolution</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { label: 'Wireframe', stage: 'Early Concept', bgColor: 'bg-gray-800' },
+                { label: 'Lo-Fi Mockup', stage: 'Structure Definition', bgColor: 'bg-gray-700' },
+                { label: 'Final Design', stage: 'Production Ready', bgColor: 'bg-gradient-to-br from-emerald-500/20 to-teal-500/20' }
+              ].map((item, i) => (
+                <div key={i} className="group cursor-pointer">
+                  <div className={`aspect-video ${item.bgColor} rounded-lg mb-3 overflow-hidden border border-white/10 flex items-center justify-center relative`}>
+                    {/* Simplified mockup representation */}
+                    <div className="w-4/5 h-4/5 bg-black/30 rounded flex flex-col p-2">
+                      <div className="h-2 bg-white/20 rounded mb-2 w-1/2" />
+                      <div className="flex-1 flex gap-2">
+                        <div className="w-1/4 bg-white/10 rounded" />
+                        <div className="flex-1 bg-white/10 rounded" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-colors flex items-center justify-center">
+                      <Icon name="Eye" className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                  </div>
+                  <p className="text-white font-medium">{item.label}</p>
+                  <p className="text-gray-500 text-sm">{item.stage}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Results & Metrics */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The Results</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Since launch, Coinflow has exceeded all performance benchmarks and business goals
+            </p>
+          </div>
+
+          {/* Metrics Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { value: '$2.5B+', label: 'Monthly Trading Volume', icon: 'TrendingUp', change: '+340%' },
+              { value: '150K+', label: 'Active Traders', icon: 'Users', change: '+520%' },
+              { value: '<50ms', label: 'Average Trade Execution', icon: 'Zap', change: '-85%' },
+              { value: '99.99%', label: 'Platform Uptime', icon: 'ShieldCheck', change: 'Enterprise Grade' }
+            ].map((metric, i) => (
+              <div key={i} className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-6 text-center">
+                <div className="w-14 h-14 bg-emerald-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name={metric.icon} className="w-7 h-7 text-emerald-400" />
+                </div>
+                <p className="text-4xl font-bold text-white mb-1">{metric.value}</p>
+                <p className="text-gray-400 text-sm mb-2">{metric.label}</p>
+                <span className="text-emerald-400 text-xs font-medium">{metric.change}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Before/After Comparison */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+            <h3 className="text-xl font-semibold text-white mb-6 text-center">Before & After Impact</h3>
+            <div className="space-y-4">
+              {[
+                { metric: 'User Onboarding Time', before: '15 minutes', after: '3 minutes', improvement: '80% faster' },
+                { metric: 'Trade Completion Rate', before: '67%', after: '94%', improvement: '40% improvement' },
+                { metric: 'Customer Support Tickets', before: '450/week', after: '120/week', improvement: '73% reduction' },
+                { metric: 'Mobile User Engagement', before: '12%', after: '45%', improvement: '275% increase' }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
+                  <div className="flex-1">
+                    <p className="text-white font-medium">{item.metric}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-gray-500 line-through mr-4">{item.before}</span>
+                    <span className="text-white font-semibold">{item.after}</span>
+                  </div>
+                  <div className="w-32 text-right">
+                    <span className="text-emerald-400 text-sm font-medium">{item.improvement}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonial */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-emerald-500/5 to-teal-500/5">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Icon name="Quote" className="w-16 h-16 text-emerald-500/30 mx-auto mb-8" />
+            <blockquote className="text-2xl md:text-3xl text-white font-light leading-relaxed mb-8">
+              "Lock J Lab didn't just build us a trading platform—they built us a competitive advantage. The attention to detail, technical expertise, and genuine partnership approach made all the difference. We launched 3 weeks ahead of schedule and exceeded our first-year user targets within 4 months."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                MT
+              </div>
+              <div className="text-left">
+                <p className="text-white font-semibold">Michael Torres</p>
+                <p className="text-gray-400">Founder & CEO, Coinflow Finance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Case Studies */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white mb-8">Related Projects</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: 'MediBook', category: 'Healthcare Platform', href: '/work/medibook', color: 'from-blue-500 to-cyan-500' },
+              { name: 'IDS Express', category: 'Service Platform', href: '/work/ids-express', color: 'from-purple-500 to-pink-500' },
+              { name: 'IDS Staffing', category: 'HR Technology', href: '/work/ids-staffing', color: 'from-orange-500 to-amber-500' }
+            ].map((project, i) => (
+              <Link key={i} href={project.href} className="group block">
+                <div className={`aspect-video bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center relative overflow-hidden`}>
+                  <span className="text-white text-4xl font-bold opacity-30">{project.name[0]}</span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <Icon name="ArrowRight" className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+                <h3 className="text-white font-semibold group-hover:text-emerald-400 transition-colors">{project.name}</h3>
+                <p className="text-gray-500 text-sm">{project.category}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="py-16 md:py-24 border-t border-white/10">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Tech Stack</h2>
           <div className="flex flex-wrap justify-center gap-4">

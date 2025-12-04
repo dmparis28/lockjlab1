@@ -485,6 +485,97 @@ export default function IDSStaffingCaseStudy() {
         </div>
       </section>
 
+      {/* Results & Metrics */}
+      <section className="py-16 md:py-24 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The Results</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              The new platform transformed IDS Staffing&apos;s lead generation and placement process
+            </p>
+          </div>
+
+          {/* Metrics Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { value: '3x', label: 'Faster Placements', icon: 'Zap', change: '48hrs avg' },
+              { value: '280%', label: 'Lead Increase', icon: 'TrendingUp', change: 'First 6 months' },
+              { value: '95%', label: 'Client Retention', icon: 'Users', change: 'Up from 72%' },
+              { value: '4.8/5', label: 'Client Satisfaction', icon: 'Star', change: '1000+ reviews' }
+            ].map((metric, i) => (
+              <div key={i} className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-6 text-center">
+                <div className="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name={metric.icon} className="w-7 h-7 text-red-400" />
+                </div>
+                <p className="text-4xl font-bold text-white mb-1">{metric.value}</p>
+                <p className="text-gray-400 text-sm mb-2">{metric.label}</p>
+                <span className="text-red-400 text-xs font-medium">{metric.change}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonial */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-red-500/5 to-orange-500/5">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Icon name="Quote" className="w-16 h-16 text-red-500/30 mx-auto mb-8" />
+            <blockquote className="text-2xl md:text-3xl text-white font-light leading-relaxed mb-8">
+              &quot;Lock J Lab completely transformed our business. The new platform has cut our placement time by two-thirds, and our recruiters can now focus on finding the right matches instead of drowning in paperwork. We&apos;ve seen a 280% increase in qualified leads.&quot;
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                AR
+              </div>
+              <div className="text-left">
+                <p className="text-white font-semibold">Amanda Richardson</p>
+                <p className="text-gray-400">VP of Talent, IDS Staffing Solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Case Studies */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white mb-8">Related Projects</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: 'Coinflow', category: 'Fintech Platform', href: '/work/coinflow', color: 'from-emerald-500 to-teal-500' },
+              { name: 'MediBook', category: 'Healthcare Platform', href: '/work/medibook', color: 'from-blue-500 to-cyan-500' },
+              { name: 'IDS Express', category: 'Service Platform', href: '/work/ids-express', color: 'from-cyan-500 to-blue-500' }
+            ].map((project, i) => (
+              <Link key={i} href={project.href} className="group block">
+                <div className={`aspect-video bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center relative overflow-hidden`}>
+                  <span className="text-white text-4xl font-bold opacity-30">{project.name[0]}</span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <Icon name="ArrowRight" className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+                <h3 className="text-white font-semibold group-hover:text-red-400 transition-colors">{project.name}</h3>
+                <p className="text-gray-500 text-sm">{project.category}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="py-16 md:py-24 border-t border-white/10">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">Tech Stack</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {['Next.js', 'React', 'Tailwind CSS', 'PostgreSQL', 'Prisma', 'Stripe', 'Vercel', 'Node.js', 'Twilio'].map((tech) => (
+              <div key={tech} className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-gray-300">
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-red-900/20 to-transparent">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">

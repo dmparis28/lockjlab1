@@ -594,8 +594,193 @@ export default function MediBookCaseStudy() {
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* Challenge & Solution */}
       <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Challenge */}
+            <div className="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                  <Icon name="AlertCircle" className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">The Challenge</h3>
+              </div>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  MediBook Health needed a comprehensive telemedicine platform that could handle the surge in remote healthcare demand while maintaining HIPAA compliance and providing an intuitive experience for both patients and healthcare providers.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'HIPAA-compliant video consultations',
+                    'Complex scheduling across multiple time zones',
+                    'Integration with existing EHR systems',
+                    'Secure payment processing for copays',
+                    'Real-time prescription and referral management'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="X" className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Solution */}
+            <div className="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Icon name="Sparkles" className="w-6 h-6 text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Our Solution</h3>
+              </div>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  We built a secure, scalable telemedicine platform with a focus on user experience and regulatory compliance, enabling MediBook to serve patients across 50 states.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'End-to-end encrypted WebRTC video calls',
+                    'AI-powered scheduling optimization',
+                    'HL7 FHIR compliant EHR integration',
+                    'Stripe Connect for multi-party payments',
+                    'E-prescription with pharmacy integration'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="Check" className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Design Process */}
+      <section className="py-16 md:py-24 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Design Process</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Healthcare requires extra attention to accessibility, trust, and clarity in design
+            </p>
+          </div>
+
+          {/* Process Timeline */}
+          <div className="grid md:grid-cols-4 gap-6 mb-12">
+            {[
+              { phase: 'Discovery', duration: '3 weeks', icon: 'Target', items: ['Stakeholder interviews', 'Patient journey mapping', 'Compliance review'] },
+              { phase: 'UX Design', duration: '3 weeks', icon: 'Layers', items: ['Accessibility audit', 'User flow optimization', 'Prototype testing'] },
+              { phase: 'UI Design', duration: '3 weeks', icon: 'Palette', items: ['Calming color palette', 'Clear typography', 'Trust indicators'] },
+              { phase: 'Validation', duration: '2 weeks', icon: 'ShieldCheck', items: ['HIPAA review', 'Security testing', 'User acceptance'] }
+            ].map((step, i) => (
+              <div key={i} className="relative">
+                {i < 3 && (
+                  <div className="hidden md:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-blue-500/50 to-transparent z-0" />
+                )}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 relative z-10">
+                  <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
+                    <Icon name={step.icon} className="w-8 h-8 text-blue-400" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-1">{step.phase}</h3>
+                  <p className="text-blue-400 text-sm mb-3">{step.duration}</p>
+                  <ul className="space-y-2">
+                    {step.items.map((item, j) => (
+                      <li key={j} className="text-gray-400 text-sm flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Results & Metrics */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The Results</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              MediBook has transformed healthcare access for hundreds of thousands of patients
+            </p>
+          </div>
+
+          {/* Metrics Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { value: '250K+', label: 'Patients Served', icon: 'Users', change: '+400%' },
+              { value: '15min', label: 'Avg Wait Time', icon: 'Timer', change: '-75%' },
+              { value: '4.9/5', label: 'Patient Satisfaction', icon: 'Star', change: '+0.8' },
+              { value: '$2.5M', label: 'Monthly Revenue', icon: 'TrendingUp', change: '+280%' }
+            ].map((metric, i) => (
+              <div key={i} className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-6 text-center">
+                <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name={metric.icon} className="w-7 h-7 text-blue-400" />
+                </div>
+                <p className="text-4xl font-bold text-white mb-1">{metric.value}</p>
+                <p className="text-gray-400 text-sm mb-2">{metric.label}</p>
+                <span className="text-blue-400 text-xs font-medium">{metric.change}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonial */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-500/5 to-cyan-500/5">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Icon name="Quote" className="w-16 h-16 text-blue-500/30 mx-auto mb-8" />
+            <blockquote className="text-2xl md:text-3xl text-white font-light leading-relaxed mb-8">
+              "Lock J Lab understood our mission from day one. They didn't just build us an app—they helped us reimagine how healthcare can be delivered. Our patients love the platform, and our providers have seen their efficiency double."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                SC
+              </div>
+              <div className="text-left">
+                <p className="text-white font-semibold">Sarah Chen</p>
+                <p className="text-gray-400">CEO, MediBook Health</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Case Studies */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white mb-8">Related Projects</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: 'Coinflow', category: 'Fintech Platform', href: '/work/coinflow', color: 'from-emerald-500 to-teal-500' },
+              { name: 'IDS Express', category: 'Service Platform', href: '/work/ids-express', color: 'from-purple-500 to-pink-500' },
+              { name: 'IDS Staffing', category: 'HR Technology', href: '/work/ids-staffing', color: 'from-orange-500 to-amber-500' }
+            ].map((project, i) => (
+              <Link key={i} href={project.href} className="group block">
+                <div className={`aspect-video bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center relative overflow-hidden`}>
+                  <span className="text-white text-4xl font-bold opacity-30">{project.name[0]}</span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <Icon name="ArrowRight" className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+                <h3 className="text-white font-semibold group-hover:text-blue-400 transition-colors">{project.name}</h3>
+                <p className="text-gray-500 text-sm">{project.category}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="py-16 md:py-24 border-t border-white/10">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Tech Stack</h2>
           <div className="flex flex-wrap justify-center gap-4">

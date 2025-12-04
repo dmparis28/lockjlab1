@@ -113,13 +113,13 @@ const IDSMockup = () => (
       <h3 className="text-2xl font-bold text-white italic mb-2">Get A Quote</h3>
       <p className="text-gray-300 text-xs mb-5 max-w-xs">From The Country&apos;s Number One Collision Center Staffing Solution.</p>
       <div className="flex gap-3">
-        <button className="bg-red-600 hover:bg-red-700 text-white text-xs px-5 py-2.5 rounded font-semibold uppercase tracking-wide transition-colors">Single Location</button>
-        <button className="bg-white hover:bg-gray-100 text-gray-800 text-xs px-5 py-2.5 rounded font-semibold uppercase tracking-wide transition-colors">Multi Location</button>
+        <button className="bg-red-600 hover:bg-red-700 text-white text-xs px-5 py-2.5 rounded font-semibold uppercase tracking-wide transition-all">Single Location</button>
+        <button className="bg-white hover:bg-gray-100 text-gray-800 text-xs px-5 py-2.5 rounded font-semibold uppercase tracking-wide transition-all">Multi Location</button>
       </div>
       
       {/* Reviews bar */}
       <div className="mt-auto pt-6">
-        <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 w-fit">
+        <div className="flex items-center gap-3 bg-white/10 rounded-lg px-4 py-3 w-fit">
           <span className="text-white text-sm font-medium">Based On 1,000+ Reviews</span>
           <div className="flex">
             {[1,2,3,4,5].map(i => (
@@ -164,7 +164,7 @@ const IDSExpressMockup = () => (
       </div>
       
       {/* Continue Button */}
-      <button className="w-full bg-cyan-400 hover:bg-cyan-500 text-white font-semibold py-3 rounded-lg transition-colors text-sm">
+      <button className="w-full bg-cyan-400 hover:bg-cyan-500 text-white font-semibold py-3 rounded-lg transition-all text-sm">
         Continue →
       </button>
       
@@ -179,7 +179,7 @@ const IDSExpressMockup = () => (
 
 export default function Portfolio() {
   return (
-    <section className="bg-[#0B0F19] py-20 md:py-32">
+    <section className="bg-[var(--bg-primary)] py-20 md:py-32">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-sky-400 font-semibold tracking-wider uppercase text-sm">More Projects</span>

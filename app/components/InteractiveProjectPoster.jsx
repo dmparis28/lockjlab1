@@ -3,8 +3,12 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Icon from './Icon.jsx';
+import { useTheme } from '../context/ThemeContext';
 
 export default function InteractiveProjectPoster() {
+  const { activeTheme } = useTheme();
+  const isLight = activeTheme === 'cleanBespoke';
+  
   const [view, setView] = useState('initial');
   const [projectData, setProjectData] = useState({
     title: '',
@@ -88,10 +92,12 @@ export default function InteractiveProjectPoster() {
     setView('contact-submitted');
   };
 
-  const inputClass = "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition";
+  const inputClass = isLight 
+    ? "w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition"
+    : "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition";
 
   return (
-    <section className="bg-[#0B0F19] py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-[var(--bg-primary)] py-20 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <svg className="absolute inset-0 w-full h-full opacity-20" aria-hidden="true">
         <defs>
@@ -102,23 +108,27 @@ export default function InteractiveProjectPoster() {
         <rect width="100%" height="100%" fill="url(#grid-pattern)" />
       </svg>
       
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-sky-600/10 rounded-full blur-3xl -z-0" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl -z-0" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-radial from-sky-600/15 to-transparent -z-0" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-radial from-purple-600/15 to-transparent -z-0" />
 
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
         
         {/* Initial State */}
         {view === 'initial' && (
           <div className="text-center w-full animate-fade-in">
-            <p className="text-sky-400 font-semibold tracking-wider uppercase mb-4">Let's Build Together</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Your Project Could Be Next</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+            <p className="font-semibold tracking-wider uppercase mb-4" style={{ color: 'var(--accent)' }}>Let's Build Together</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-heading)' }}>Your Project Could Be Next</h2>
+            <p className="text-lg max-w-2xl mx-auto mb-10" style={{ color: 'var(--text-secondary)' }}>
               We partner with ambitious teams to bring innovative ideas to life. Ready to transform your vision into a market-ready product?
             </p>
             
             <div 
               onClick={() => setView('form')} 
-              className="group cursor-pointer relative w-full max-w-4xl mx-auto rounded-2xl border-2 border-dashed border-sky-500/30 hover:border-sky-500/60 bg-[#111827] hover:bg-[#1a2332] transition-all duration-300 flex flex-col items-center justify-center p-16 md:p-24"
+              className="group cursor-pointer relative w-full max-w-4xl mx-auto rounded-2xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center p-16 md:p-24"
+              style={{
+                backgroundColor: 'var(--bg-secondary)',
+                borderColor: isLight ? 'var(--border)' : 'rgba(14, 165, 233, 0.3)'
+              }}
             >
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-sky-500/50 rounded-tl-2xl" />
@@ -129,7 +139,7 @@ export default function InteractiveProjectPoster() {
               <div className="w-24 h-24 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-sky-500/20 group-hover:border-sky-500/50 transition-all">
                 <Icon name="UploadCloud" className="w-12 h-12 text-sky-400" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">Submit Your Project Idea</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-sky-400 transition-all">Submit Your Project Idea</h3>
               <p className="text-gray-400 text-lg">Click here to tell us about your vision</p>
               
               {/* Hover arrow */}
@@ -143,8 +153,8 @@ export default function InteractiveProjectPoster() {
         {/* Form State */}
         {view === 'form' && (
           <div className="w-full max-w-2xl animate-fade-in">
-            <h2 className="text-3xl font-bold text-white mb-2 text-center">Tell Us About Your Project</h2>
-            <p className="text-gray-400 mb-8 text-center">Share the details and we'll bring it to life.</p>
+            <h2 className="text-3xl font-bold mb-2 text-center" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-heading)' }}>Tell Us About Your Project</h2>
+            <p className="mb-8 text-center" style={{ color: 'var(--text-secondary)' }}>Share the details and we'll bring it to life.</p>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -163,7 +173,7 @@ export default function InteractiveProjectPoster() {
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Cover Image (Optional)</label>
                 <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
-                <div onClick={() => fileInputRef.current?.click()} className="cursor-pointer w-full h-40 rounded-lg border-2 border-dashed border-white/20 hover:border-sky-500/50 bg-white/5 flex flex-col items-center justify-center text-gray-400 transition-colors">
+                <div onClick={() => fileInputRef.current?.click()} className="cursor-pointer w-full h-40 rounded-lg border-2 border-dashed border-white/20 hover:border-sky-500/50 bg-white/5 flex flex-col items-center justify-center text-gray-400 transition-all">
                   {imagePreview ? (<img src={imagePreview} alt="Preview" className="h-full w-full object-cover rounded-md" />) : (<><Icon name="UploadCloud" className="w-8 h-8 mb-2" /><p className="text-sm">Click to upload an image</p></>)}
                 </div>
               </div>

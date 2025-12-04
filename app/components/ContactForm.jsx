@@ -70,17 +70,17 @@ const ContactForm = ({
     { value: 'other', label: 'Other' },
   ];
 
-  const inputClasses = "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/50 transition-all";
-  const labelClasses = "block text-sm font-medium text-gray-300 mb-2";
+  const inputClasses = "w-full bg-[var(--input-bg)] border border-[var(--input-border)] rounded-lg px-4 py-3 text-[var(--input-text)] placeholder-[var(--input-placeholder)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/50 focus:border-[var(--accent)]/50 transition-all";
+  const labelClasses = "block text-sm font-medium text-[var(--text-secondary)] mb-2";
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#111827] border border-white/10 rounded-2xl p-8 md:p-12 text-center">
+      <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-8 md:p-12 text-center">
         <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
           <Icon name="CheckCircle" className="w-8 h-8 text-green-400" />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-4">Thank you!</h3>
-        <p className="text-gray-400 mb-6">
+        <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Thank you!</h3>
+        <p className="text-[var(--text-secondary)] mb-6">
           We've received your message and will get back to you within 24 hours.
         </p>
         <button
@@ -97,7 +97,7 @@ const ContactForm = ({
               message: '',
             });
           }}
-          className="text-sky-400 hover:text-sky-300 font-medium transition-colors"
+          className="text-[var(--accent)] hover:text-sky-300 font-medium transition-all"
         >
           Send another message
         </button>
@@ -106,7 +106,7 @@ const ContactForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#111827] border border-white/10 rounded-2xl p-8 md:p-12">
+    <form onSubmit={handleSubmit} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-8 md:p-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* First Name */}
         <div>
@@ -244,11 +244,11 @@ const ContactForm = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-sky-600 to-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:shadow-sky-500/30 group border border-sky-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gradient-to-r from-sky-600 to-blue-700 text-[var(--text-primary)] font-semibold py-4 px-8 rounded-lg transition duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:shadow-sky-500/30 group border border-sky-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <>
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-[var(--text-primary)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -263,7 +263,7 @@ const ContactForm = ({
         </button>
       </div>
 
-      <p className="mt-4 text-sm text-gray-500 text-center">
+      <p className="mt-4 text-sm text-[var(--text-muted)] text-center">
         By submitting this form, you agree to our privacy policy.
       </p>
     </form>

@@ -28,70 +28,67 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
-            <Icon name="Zap" className="w-7 h-7 text-white" />
+        <div className="flex items-center justify-center gap-2.5 mb-8">
+          <div className="w-10 h-10 rounded-lg bg-gray-900 flex items-center justify-center">
+            <span className="text-white font-bold text-lg">L</span>
           </div>
-          <div>
-            <span className="text-white font-bold text-xl block">Lock J Lab</span>
-            <span className="text-sky-400 text-sm">Admin Portal</span>
-          </div>
+          <span className="text-gray-900 font-semibold text-lg">Lock J Lab</span>
         </div>
 
         {/* Login Card */}
-        <div className="bg-[#111827] border border-white/10 rounded-2xl p-8">
-          <h1 className="text-2xl font-bold text-white mb-2">Welcome back</h1>
-          <p className="text-gray-400 mb-6">Sign in to access the admin dashboard</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+          <h1 className="text-xl font-semibold text-gray-900 mb-1">Sign in</h1>
+          <p className="text-gray-500 text-sm mb-6">Access the admin dashboard</p>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 mb-6 flex items-center gap-2">
-              <Icon name="AlertCircle" className="w-5 h-5 text-red-400" />
-              <span className="text-red-400 text-sm">{error}</span>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-6 flex items-center gap-2">
+              <Icon name="AlertCircle" className="w-4 h-4 text-red-600" />
+              <span className="text-red-600 text-sm">{error}</span>
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-sky-500"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
                 placeholder="admin@lockjlab.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-sky-500"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
                 placeholder="••••••••"
               />
             </div>
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 bg-gradient-to-r from-sky-600 to-blue-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-sky-500/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full py-2.5 bg-gray-900 text-white font-medium rounded-lg transition-colors hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm"
             >
               {isLoading ? (
-                <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
+                <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
               ) : (
-                'Sign In'
+                'Sign in'
               )}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-gray-500 text-sm">
-              Demo: admin@lockjlab.com / admin123
+          <div className="mt-6 pt-6 border-t border-gray-100 text-center">
+            <p className="text-gray-400 text-xs">
+              Demo credentials: admin@lockjlab.com / admin123
             </p>
           </div>
         </div>

@@ -1,49 +1,62 @@
 // Filename: app/admin/dashboard/page.jsx
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Icon from '../../components/Icon';
 
 const stats = [
-  { label: 'Active Projects', value: '12', change: '+2', icon: 'FolderOpen', color: 'sky' },
-  { label: 'Total Clients', value: '48', change: '+5', icon: 'Users', color: 'emerald' },
-  { label: 'Blog Posts', value: '24', change: '+3', icon: 'Newspaper', color: 'purple' },
-  { label: 'Revenue MTD', value: '$84,250', change: '+12%', icon: 'DollarSign', color: 'amber' },
+  { label: 'Active Projects', value: '12', change: '+2 this month', icon: 'Briefcase', trend: 'up' },
+  { label: 'Total Clients', value: '48', change: '+5 this month', icon: 'Users', trend: 'up' },
+  { label: 'Blog Posts', value: '24', change: '+3 this month', icon: 'FileText', trend: 'up' },
+  { label: 'Revenue MTD', value: '$84,250', change: '+12% vs last month', icon: 'TrendingUp', trend: 'up' },
 ];
 
 const recentProjects = [
-  { id: 1, name: 'MediBook Platform', client: 'HealthTech Inc', status: 'In Progress', progress: 75, dueDate: '2025-01-15' },
-  { id: 2, name: 'Coinflow Dashboard', client: 'Crypto Ventures', status: 'In Progress', progress: 45, dueDate: '2025-02-01' },
-  { id: 3, name: 'IDS Express App', client: 'IDS Group', status: 'Review', progress: 90, dueDate: '2025-12-20' },
-  { id: 4, name: 'E-commerce Redesign', client: 'RetailMax', status: 'Planning', progress: 15, dueDate: '2025-03-01' },
+  { id: 1, name: 'MediBook Platform', client: 'HealthTech Inc', status: 'In Progress', progress: 75, dueDate: 'Jan 15, 2025' },
+  { id: 2, name: 'Coinflow Dashboard', client: 'Crypto Ventures', status: 'In Progress', progress: 45, dueDate: 'Feb 1, 2025' },
+  { id: 3, name: 'IDS Express App', client: 'IDS Group', status: 'Review', progress: 90, dueDate: 'Dec 20, 2024' },
+  { id: 4, name: 'E-commerce Redesign', client: 'RetailMax', status: 'Planning', progress: 15, dueDate: 'Mar 1, 2025' },
 ];
 
 const recentActivity = [
-  { id: 1, action: 'New project created', project: 'E-commerce Redesign', time: '2 hours ago' },
-  { id: 2, action: 'Invoice paid', project: 'MediBook Platform', time: '5 hours ago' },
-  { id: 3, action: 'Files uploaded', project: 'Coinflow Dashboard', time: '1 day ago' },
-  { id: 4, action: 'Comment added', project: 'IDS Express App', time: '2 days ago' },
+  { id: 1, action: 'New project created', detail: 'E-commerce Redesign', time: '2 hours ago', icon: 'Plus' },
+  { id: 2, action: 'Invoice paid', detail: 'MediBook Platform - $12,500', time: '5 hours ago', icon: 'Check' },
+  { id: 3, action: 'Files uploaded', detail: '8 files to Coinflow Dashboard', time: '1 day ago', icon: 'Upload' },
+  { id: 4, action: 'Comment added', detail: 'IDS Express App review', time: '2 days ago', icon: 'MessageSquare' },
 ];
+
+const statusColors = {
+  'In Progress': 'bg-blue-50 text-blue-700',
+  'Review': 'bg-amber-50 text-amber-700',
+  'Planning': 'bg-gray-100 text-gray-600',
+  'Completed': 'bg-green-50 text-green-700',
+};
 
 export default function AdminDashboard() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl">
+      {/* Welcome */}
+      <div>
+        <h1 className="text-2xl font-semibold text-gray-900">Welcome back</h1>
+        <p className="text-gray-500 text-sm mt-1">Here's what's happening with your projects today.</p>
+      </div>
+
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-[#111827] border border-white/10 rounded-xl p-6"
+            className="bg-white border border-gray-200 rounded-lg p-5"
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className={`p-3 rounded-lg bg-${stat.color}-500/10`}>
-                <Icon name={stat.icon} className={`w-6 h-6 text-${stat.color}-400`} />
-              </div>
-              <span className="text-emerald-400 text-sm font-medium">{stat.change}</span>
+            <div className="flex items-center justify-between">
+              <span className="text-gray-500 text-sm font-medium">{stat.label}</span>
+              <Icon name={stat.icon} className="w-4 h-4 text-gray-400" />
             </div>
-            <p className="text-3xl font-bold text-white mb-1">{stat.value}</p>
-            <p className="text-gray-400 text-sm">{stat.label}</p>
+            <p className="text-2xl font-semibold text-gray-900 mt-2">{stat.value}</p>
+            <p className="text-green-600 text-xs mt-1 flex items-center gap-1">
+              <Icon name="TrendingUp" className="w-3 h-3" />
+              {stat.change}
+            </p>
           </div>
         ))}
       </div>
@@ -51,65 +64,61 @@ export default function AdminDashboard() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Projects */}
-        <div className="lg:col-span-2 bg-[#111827] border border-white/10 rounded-xl">
-          <div className="p-6 border-b border-white/10 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">Recent Projects</h2>
-            <Link href="/admin/projects" className="text-sky-400 hover:text-sky-300 text-sm font-medium">
-              View All
+        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-lg">
+          <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+            <h2 className="font-semibold text-gray-900">Recent Projects</h2>
+            <Link href="/admin/projects" className="text-gray-500 hover:text-gray-900 text-sm font-medium">
+              View all →
             </Link>
           </div>
-          <div className="p-6">
-            <div className="space-y-4">
-              {recentProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
-                >
-                  <div className="flex-1">
-                    <h3 className="text-white font-medium">{project.name}</h3>
-                    <p className="text-gray-400 text-sm">{project.client}</p>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <div className="w-32">
-                      <div className="flex items-center justify-between text-xs mb-1">
-                        <span className="text-gray-400">Progress</span>
-                        <span className="text-white">{project.progress}%</span>
-                      </div>
-                      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-sky-500 rounded-full"
-                          style={{ width: `${project.progress}%` }}
-                        />
-                      </div>
-                    </div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      project.status === 'In Progress' ? 'bg-sky-500/20 text-sky-400' :
-                      project.status === 'Review' ? 'bg-amber-500/20 text-amber-400' :
-                      'bg-gray-500/20 text-gray-400'
-                    }`}>
-                      {project.status}
-                    </span>
-                  </div>
+          <div className="divide-y divide-gray-100">
+            {recentProjects.map((project) => (
+              <div
+                key={project.id}
+                className="px-5 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-medium text-gray-900 truncate">{project.name}</h3>
+                  <p className="text-gray-500 text-xs mt-0.5">{project.client}</p>
                 </div>
-              ))}
-            </div>
+                <div className="flex items-center gap-4 ml-4">
+                  <div className="w-24 hidden sm:block">
+                    <div className="flex items-center justify-between text-xs mb-1">
+                      <span className="text-gray-400">{project.progress}%</span>
+                    </div>
+                    <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gray-900 rounded-full transition-all"
+                        style={{ width: `${project.progress}%` }}
+                      />
+                    </div>
+                  </div>
+                  <span className={`px-2.5 py-1 rounded-md text-xs font-medium ${statusColors[project.status]}`}>
+                    {project.status}
+                  </span>
+                  <span className="text-gray-400 text-xs hidden md:block w-24 text-right">{project.dueDate}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-[#111827] border border-white/10 rounded-xl">
-          <div className="p-6 border-b border-white/10">
-            <h2 className="text-lg font-semibold text-white">Recent Activity</h2>
+        <div className="bg-white border border-gray-200 rounded-lg">
+          <div className="px-5 py-4 border-b border-gray-100">
+            <h2 className="font-semibold text-gray-900">Activity</h2>
           </div>
-          <div className="p-6">
+          <div className="p-5">
             <div className="space-y-4">
-              {recentActivity.map((activity) => (
+              {recentActivity.map((activity, index) => (
                 <div key={activity.id} className="flex items-start gap-3">
-                  <div className="w-2 h-2 mt-2 rounded-full bg-sky-500" />
-                  <div>
-                    <p className="text-white text-sm">{activity.action}</p>
-                    <p className="text-gray-400 text-xs">{activity.project}</p>
-                    <p className="text-gray-500 text-xs mt-1">{activity.time}</p>
+                  <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                    <Icon name={activity.icon} className="w-4 h-4 text-gray-600" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-900">{activity.action}</p>
+                    <p className="text-gray-500 text-xs truncate">{activity.detail}</p>
+                    <p className="text-gray-400 text-xs mt-1">{activity.time}</p>
                   </div>
                 </div>
               ))}
@@ -119,52 +128,35 @@ export default function AdminDashboard() {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Link
-          href="/admin/blog"
-          className="flex items-center gap-4 p-4 bg-[#111827] border border-white/10 rounded-xl hover:border-sky-500/30 transition-colors"
-        >
-          <div className="p-3 rounded-lg bg-purple-500/10">
-            <Icon name="Plus" className="w-5 h-5 text-purple-400" />
-          </div>
-          <div>
-            <p className="text-white font-medium">New Blog Post</p>
-            <p className="text-gray-400 text-sm">Create content</p>
-          </div>
-        </Link>
-        <Link
-          href="/admin/projects"
-          className="flex items-center gap-4 p-4 bg-[#111827] border border-white/10 rounded-xl hover:border-sky-500/30 transition-colors"
-        >
-          <div className="p-3 rounded-lg bg-sky-500/10">
-            <Icon name="Plus" className="w-5 h-5 text-sky-400" />
-          </div>
-          <div>
-            <p className="text-white font-medium">New Project</p>
-            <p className="text-gray-400 text-sm">Start tracking</p>
-          </div>
-        </Link>
-        <Link
-          href="/admin/clients"
-          className="flex items-center gap-4 p-4 bg-[#111827] border border-white/10 rounded-xl hover:border-sky-500/30 transition-colors"
-        >
-          <div className="p-3 rounded-lg bg-emerald-500/10">
-            <Icon name="Plus" className="w-5 h-5 text-emerald-400" />
-          </div>
-          <div>
-            <p className="text-white font-medium">Add Client</p>
-            <p className="text-gray-400 text-sm">New customer</p>
-          </div>
-        </Link>
-        <button className="flex items-center gap-4 p-4 bg-[#111827] border border-white/10 rounded-xl hover:border-sky-500/30 transition-colors text-left">
-          <div className="p-3 rounded-lg bg-amber-500/10">
-            <Icon name="Receipt" className="w-5 h-5 text-amber-400" />
-          </div>
-          <div>
-            <p className="text-white font-medium">Send Invoice</p>
-            <p className="text-gray-400 text-sm">Bill a client</p>
-          </div>
-        </button>
+      <div className="bg-white border border-gray-200 rounded-lg p-5">
+        <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Link
+            href="/admin/blog"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+          >
+            <Icon name="Plus" className="w-4 h-4 text-gray-400" />
+            <span className="text-sm font-medium text-gray-700">New Post</span>
+          </Link>
+          <Link
+            href="/admin/projects"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+          >
+            <Icon name="FolderPlus" className="w-4 h-4 text-gray-400" />
+            <span className="text-sm font-medium text-gray-700">New Project</span>
+          </Link>
+          <Link
+            href="/admin/clients"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+          >
+            <Icon name="UserPlus" className="w-4 h-4 text-gray-400" />
+            <span className="text-sm font-medium text-gray-700">Add Client</span>
+          </Link>
+          <button className="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors">
+            <Icon name="Receipt" className="w-4 h-4 text-gray-400" />
+            <span className="text-sm font-medium text-gray-700">Send Invoice</span>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -683,8 +683,150 @@ export default function IDSExpressCaseStudy() {
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* Challenge & Solution */}
       <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Challenge */}
+            <div className="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                  <Icon name="AlertCircle" className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">The Challenge</h3>
+              </div>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  IDS Express Car Wash wanted to modernize their unlimited wash membership system. Their existing process was entirely paper-based, leading to high no-show rates, manual billing issues, and no way to track customer preferences.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'Paper-based membership management',
+                    '40% no-show rate for appointments',
+                    'No license plate recognition system',
+                    'Manual payment processing each month',
+                    'Zero customer engagement data'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="X" className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Solution */}
+            <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                  <Icon name="Sparkles" className="w-6 h-6 text-cyan-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Our Solution</h3>
+              </div>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  We built a mobile-first membership platform with license plate recognition, automated billing, and SMS notifications that transformed their customer experience.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    'Mobile app with easy signup flow',
+                    'License plate recognition integration',
+                    'Automated Stripe recurring billing',
+                    'SMS reminders reduce no-shows by 60%',
+                    'Customer analytics dashboard'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="Check" className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Results & Metrics */}
+      <section className="py-16 md:py-24 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The Results</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              The new platform transformed IDS Express operations and customer satisfaction
+            </p>
+          </div>
+
+          {/* Metrics Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { value: '60%', label: 'Reduction in No-Shows', icon: 'Timer', change: 'Down from 40%' },
+              { value: '45%', label: 'Increase in Repeat Customers', icon: 'Users', change: '+45%' },
+              { value: '3min', label: 'Average Signup Time', icon: 'Zap', change: 'vs 15min before' },
+              { value: '$180K', label: 'Annual Revenue Increase', icon: 'TrendingUp', change: '+35%' }
+            ].map((metric, i) => (
+              <div key={i} className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-6 text-center">
+                <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name={metric.icon} className="w-7 h-7 text-cyan-400" />
+                </div>
+                <p className="text-4xl font-bold text-white mb-1">{metric.value}</p>
+                <p className="text-gray-400 text-sm mb-2">{metric.label}</p>
+                <span className="text-cyan-400 text-xs font-medium">{metric.change}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonial */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-cyan-500/5 to-blue-500/5">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Icon name="Quote" className="w-16 h-16 text-cyan-500/30 mx-auto mb-8" />
+            <blockquote className="text-2xl md:text-3xl text-white font-light leading-relaxed mb-8">
+              "The Lock J Lab team delivered exactly what we needed—a modern membership system that our customers actually enjoy using. Our no-show rate dropped by 60%, and we're seeing more repeat customers than ever. The ROI was clear within the first month."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                JW
+              </div>
+              <div className="text-left">
+                <p className="text-white font-semibold">James Wilson</p>
+                <p className="text-gray-400">Operations Director, IDS Express Car Wash</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Case Studies */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white mb-8">Related Projects</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: 'Coinflow', category: 'Fintech Platform', href: '/work/coinflow', color: 'from-emerald-500 to-teal-500' },
+              { name: 'MediBook', category: 'Healthcare Platform', href: '/work/medibook', color: 'from-blue-500 to-cyan-500' },
+              { name: 'IDS Staffing', category: 'HR Technology', href: '/work/ids-staffing', color: 'from-orange-500 to-amber-500' }
+            ].map((project, i) => (
+              <Link key={i} href={project.href} className="group block">
+                <div className={`aspect-video bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center relative overflow-hidden`}>
+                  <span className="text-white text-4xl font-bold opacity-30">{project.name[0]}</span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <Icon name="ArrowRight" className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+                <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors">{project.name}</h3>
+                <p className="text-gray-500 text-sm">{project.category}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="py-16 md:py-24 border-t border-white/10">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Tech Stack</h2>
           <div className="flex flex-wrap justify-center gap-4">
